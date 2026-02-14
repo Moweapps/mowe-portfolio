@@ -173,7 +173,8 @@
             <!-- Filter Tabs -->
             <div class="overflow-x-auto mb-16 pb-4 -mx-4 px-4">
                 <div class="flex gap-0 min-w-max md:min-w-0 md:justify-center border-b border-gray-800">
-                    <button class="tab-button active" onclick="filterProjects('all', this)">Маркетплейсы</button>
+                    <button class="tab-button active" onclick="filterProjects('all', this)">Все проекты</button>
+                    <button class="tab-button" onclick="filterProjects('marketplace', this)">Маркетплейсы</button>
                     <button class="tab-button" onclick="filterProjects('freelance', this)">Фриланс</button>
                     <button class="tab-button" onclick="filterProjects('rides', this)">Поездки</button>
                     <button class="tab-button" onclick="filterProjects('crypto', this)">Крипто</button>
@@ -212,44 +213,40 @@
 
     <script>
         const projects = [
-            // МАРКЕТПЛЕЙСЫ - ВСЕ ССЫЛКИ ИЗ TELETYPE
-            { name: 'Aramisauto', desc: 'Приложение для продажи/покупки авто. Аналог авито на рынок Франции.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.aramisauto.ecommerce&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/fr/app/aramisauto-voiture-occasion/id1170153344' }] },
-            { name: 'The Saree Room', desc: 'Онлайн-магазин одежды на рынок Канады.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=co.tapcart.app.id_LfEX9YlK4t' }, { type: 'app-store', url: 'https://apps.apple.com/ca/app/the-saree-room/id1585200109' }] },
-            { name: 'Handing', desc: 'Мобильное приложение для маркетплейса.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=co.handing.mobile' }] },
-            { name: 'Artinove', desc: 'Приложение для создания смет и счётов.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.InovaSquad.Artinove' }, { type: 'app-store', url: 'https://apps.apple.com/us/app/artinove-devis-facture-facile/id828637130' }] },
-            { name: 'Silver Spark', desc: 'Приложение на рынок Канады, знакомства для пенсионеров.', category: 'dating', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.sprestay.silverspark' }] },
-            { name: 'ListenUp Spanish', desc: 'Приложения для изучения испанского языка.', category: 'education', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.listenup.spanish.listening.practice' }] },
-            { name: 'iTicket', desc: 'Приложение для покупки билетов на события.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.evoit.iticket' }] },
-            { name: 'Iziwork', desc: 'Приложение для поиска работы, временных заданий во Франции (аналог youdo).', category: 'freelance', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=abeka.iziwork&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/by/app/iziwork-ofere%C3%A7a-servi%C3%A7os/id6450756366' }] },
-            { name: 'Instapro Homeowner', desc: 'Поиск специалистов по благоустройству дома.', category: 'freelance', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.instapro.homeownerapp.italy&gl=IT' }] },
-            { name: 'Toosla', desc: 'Приложения для проката автомобилей в Париже и Лионе.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.toosla&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/by/app/toosla-car-rental/id1156964115' }] },
-            { name: 'OnTime Cars', desc: 'Приложение для аренды автомобилей.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.eurosofttech.oakleycars' }, { type: 'app-store', url: 'https://apps.apple.com/ru/app/ontime-cars/id1530546190?l=en-GB' }] },
-            { name: 'Eliza Was Here', desc: 'Приложение для путешествий и приключений.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.sundiogroup.elizawashere' }] },
-            { name: 'Metro Brazil', desc: 'Приложение онлайн-магазин в Бразилии.', category: 'all', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=metrobrazil.android.app' }, { type: 'app-store', url: 'https://apps.apple.com/us/app/metro-brazil/id1503335901' }] },
-            { name: '@puparty_bot', desc: 'Telegram Mini App. Более 136 тысяч пользователей. Геймплей: крутишь рулетку, получаешь монеты, тратишь их на покупку собак.', category: 'other', links: [{ type: 'telegram', url: 'https://t.me/puparty_bot' }] },
-            { name: '@tontarot_bot', desc: 'Telegram Mini App. Более 16 тысяч пользователей. Приложение с раскладами таро, прогнозами.', category: 'other', links: [{ type: 'telegram', url: 'https://t.me/tontarot_bot' }] },
+            // МАРКЕТПЛЕЙСЫ
+            { name: 'Zolim', desc: 'Аналог авито (1 в 1). Сайт и мобильное приложение на flutter.', category: 'marketplace', links: [] },
+            { name: 'Aramisauto', desc: 'Приложение для продажи/покупки авто. Аналог авито на рынок Франции.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.aramisauto.ecommerce&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/fr/app/aramisauto-voiture-occasion/id1170153344' }] },
+            { name: 'The Saree Room', desc: 'Онлайн-магазин одежды на рынок Канады.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=co.tapcart.app.id_LfEX9YlK4t' }, { type: 'app-store', url: 'https://apps.apple.com/ca/app/the-saree-room/id1585200109' }] },
+            { name: 'Dish marketplace', desc: 'Магазин посуды. Сайт и мобильное приложение на flutter. Интеграция с 1С.', category: 'marketplace', links: [] },
+            { name: 'Metro Brazil', desc: 'Приложение онлайн-магазин в Бразилии.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=metrobrazil.android.app' }, { type: 'app-store', url: 'https://apps.apple.com/us/app/metro-brazil/id1503335901' }] },
+            { name: 'ZAGON', desc: 'Приложение для магазина футболок (только дизайн).', category: 'marketplace', links: [] },
+            { name: 'Talia', desc: 'Магазин одежды с дизайном как в Lamoda, интеграция с 1С.', category: 'marketplace', links: [] },
+            { name: 'Handing', desc: 'Мобильное приложение для маркетплейса.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=co.handing.mobile' }] },
+            { name: 'Artinove', desc: 'Приложение для создания смет и счётов.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.InovaSquad.Artinove' }, { type: 'app-store', url: 'https://apps.apple.com/us/app/artinove-devis-facture-facile/id828637130' }] },
+            { name: 'iTicket', desc: 'Приложение для покупки билетов на события.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.evoit.iticket' }] },
+            { name: 'Eliza Was Here', desc: 'Приложение для путешествий и приключений.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.sundiogroup.elizawashere' }] },
 
-            // МАРКЕТПЛЕЙСЫ БЕЗ ССЫЛОК
-            { name: 'Zolim', desc: 'Аналог авито (1 в 1). Сайт и мобильное приложение на flutter.', category: 'all', links: [] },
-            { name: 'Dish marketplace', desc: 'Магазин посуды. Сайт и мобильное приложение на flutter. Интеграция с 1С.', category: 'all', links: [] },
-            { name: 'ZAGON', desc: 'Приложение для магазина футболок (только дизайн).', category: 'all', links: [] },
-            { name: 'Talia', desc: 'Магазин одежды с дизайном как в Lamoda, интеграция с 1С.', category: 'all', links: [] },
-
-            // ФРИЛАНС БЕЗ ССЫЛОК
+            // ФРИЛАНС
             { name: 'Замерщики', desc: 'Биржа фриланса (по типу youdo), но с фокусом на выполнении измерительных работ.', category: 'freelance', links: [] },
             { name: 'Кадастр+', desc: 'Биржа фриланса (по типу youdo), но с фокусом на выполнении кадастровых работ. Функционал администратора для проверки исполнителя.', category: 'freelance', links: [] },
+            { name: 'Iziwork', desc: 'Приложение для поиска работы, временных заданий во Франции (аналог youdo).', category: 'freelance', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=abeka.iziwork&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/by/app/iziwork-ofere%C3%A7a-servi%C3%A7os/id6450756366' }] },
+            { name: 'Instapro Homeowner', desc: 'Поиск специалистов по благоустройству дома.', category: 'freelance', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.instapro.homeownerapp.italy&gl=IT' }] },
             { name: 'Производство.РФ', desc: 'Фриланс-биржа для фирм, предоставляющих услуги по обработке деталей.', category: 'freelance', links: [] },
             { name: 'ПодРаботкин', desc: 'Приложение для поиска исполнителя.', category: 'freelance', links: [] },
             { name: 'OJOBS', desc: 'Приложение для поиска исполнителя.', category: 'freelance', links: [] },
+            { name: 'ДомОтиДО', desc: 'Приложение для поиска специалистов по ремонту и обслуживанию дома.', category: 'freelance', links: [] },
+            { name: 'BeautyMasters', desc: 'Приложение – записная книжка для мастеров сферы красоты. Ведение списка клиентов, отправка смс / пуш-уведомлений с напоминанием, календарь, учет доходов/расходов.', category: 'freelance', links: [] },
 
-            // ПОЕЗДКИ БЕЗ ССЫЛОК
+            // ПОЕЗДКИ
             { name: 'Подвези', desc: 'Аналог блакар. Администратор может создавать маршруты. Водители и пассажиры могут подписываться на маршрут.', category: 'rides', links: [] },
             { name: 'LidCar', desc: 'Аналог блаблакар / едем.рф.', category: 'rides', links: [] },
             { name: 'Поездки.РФ', desc: 'Аналог блаблакар / едем.рф.', category: 'rides', links: [] },
             { name: 'Аян-чорук', desc: 'Приложение по типу блаблакар, но с возможностью не только найти попутчика, но и попутчик по грузоперевозкам.', category: 'rides', links: [] },
-            { name: 'DTD', desc: 'Приложение по типу блаблакара на рынок США, для перевозки авто между авто-аукционами.', category: 'rides', links: [] },
+            { name: 'DTD', desc: 'Приложение по типу блаблакара на рынок США, для перевозки авто между авто-аукционами.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.dtd.mobile' }] },
+            { name: 'Toosla', desc: 'Приложения для проката автомобилей в Париже и Лионе.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.toosla&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/by/app/toosla-car-rental/id1156964115' }] },
+            { name: 'OnTime Cars', desc: 'Приложение для аренды автомобилей.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.eurosofttech.oakleycars' }, { type: 'app-store', url: 'https://apps.apple.com/ru/app/ontime-cars/id1530546190?l=en-GB' }] },
 
-            // КРИПТО БЕЗ ССЫЛОК
+            // КРИПТО
             { name: 'SimpleSwap', desc: 'Сервис обмена криптовалют без регистрации.', category: 'crypto', links: [] },
             { name: 'Bitso', desc: 'Популярная платформа в Латинской Америке для торговли криптовалютами.', category: 'crypto', links: [] },
             { name: 'Hodlnaut', desc: 'Приложение для получения процентов на депозиты в криптовалюте.', category: 'crypto', links: [] },
@@ -258,20 +255,32 @@
             { name: 'Zebpay', desc: 'Индийская биржа криптовалют.', category: 'crypto', links: [] },
             { name: 'XREX', desc: 'Криптобиржа с возможностью P2P-трейдинга.', category: 'crypto', links: [] },
             { name: 'KUSHNIR', desc: 'Криптоинвестиции в проекты, краудфандинговая платформа.', category: 'crypto', links: [] },
+            { name: 'H2cryptO', desc: 'Криптовалютная платформа для торговли.', category: 'crypto', links: [] },
 
-            // ЗНАКОМСТВА БЕЗ ССЫЛОК
+            // ЗНАКОМСТВА
+            { name: 'Silver Spark', desc: 'Приложение на рынок Канады, знакомства для пенсионеров.', category: 'dating', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.sprestay.silverspark' }] },
             { name: 'Amone', desc: 'Приложение для быстрых знакомств. Сложный алгоритм метчинга и продвинутая логика чата.', category: 'dating', links: [] },
             { name: 'ArabLounge', desc: 'Приложение для знакомств с арабами.', category: 'dating', links: [] },
             { name: 'SiAstro', desc: 'Приложение для знакомств. Тиндер с гороскопом.', category: 'dating', links: [] },
             { name: 'Tithe', desc: 'Приложение для знакомств.', category: 'dating', links: [] },
             { name: 'Out & About', desc: 'Приложение для знакомств. Пользователи отображаются на карте.', category: 'dating', links: [] },
             { name: 'Maze', desc: 'Приложение для поиска партнера.', category: 'dating', links: [] },
+            { name: 'GoGo', desc: 'Приложение для знакомств и встреч.', category: 'dating', links: [] },
 
-            // ОБРАЗОВАНИЕ БЕЗ ССЫЛОК
-            { name: 'BeautyMasters', desc: 'Приложение – записная книжка для мастеров сферы красоты. Ведение списка клиентов, отправка смс / пуш-уведомлений с напоминанием, календарь, учет доходов/расходов.', category: 'education', links: [] },
+            // ОБРАЗОВАНИЕ И МЕДИЦИНА
+            { name: 'ListenUp Spanish', desc: 'Приложения для изучения испанского языка.', category: 'education', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.listenup.spanish.listening.practice' }] },
             { name: 'Emergency Service', desc: 'Медицинский справочник и тесты по специальностям.', category: 'education', links: [] },
             { name: 'Нарколог.рф', desc: 'Приложение для срочного вызова врача-нарколога.', category: 'education', links: [] },
             { name: 'Передышка', desc: 'Социальное приложение "передышка", для реализации программы "передышка" в фондах, оказывающих помощь детям с ОВЗ.', category: 'education', links: [] },
+            { name: 'SM Clinic', desc: 'Приложение для записи на прием в медицинскую клинику.', category: 'education', links: [] },
+
+            // ДРУГОЕ
+            { name: '@puparty_bot', desc: 'Telegram Mini App. Более 136 тысяч пользователей. Геймплей: крутишь рулетку, получаешь монеты, тратишь их на покупку собак.', category: 'other', links: [{ type: 'telegram', url: 'https://t.me/puparty_bot' }] },
+            { name: '@tontarot_bot', desc: 'Telegram Mini App. Более 16 тысяч пользователей. Приложение с раскладами таро, прогнозами.', category: 'other', links: [{ type: 'telegram', url: 'https://t.me/tontarot_bot' }] },
+            { name: 'Guidigo', desc: 'Приложение для путешествий с гидом.', category: 'other', links: [] },
+            { name: 'Spain Guide', desc: 'Путеводитель по Испании.', category: 'other', links: [] },
+            { name: 'Alquiler Argentina', desc: 'Приложение для аренды жилья в Аргентине.', category: 'other', links: [] },
+            { name: 'Booking Service', desc: 'Сервис бронирования услуг.', category: 'other', links: [] },
         ];
 
         const webProjects = [
