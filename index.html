@@ -4,369 +4,519 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOWE Development - Premium Mobile & Web Development</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Inter', sans-serif; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #000000;
-            color: #f8fafc;
+            color: #ffffff;
+            line-height: 1.6;
         }
-        .glass-card {
-            background: rgba(20, 20, 30, 0.45);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(124, 58, 237, 0.12);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 64px rgba(124, 58, 237, 0.25);
-            border-color: rgba(124, 58, 237, 0.25);
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
         }
-        .btn-gradient {
-            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
-            color: white;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            border: none;
-        }
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.4);
-        }
-        .btn-outline {
-            border: 1.5px solid rgba(124, 58, 237, 0.4);
-            color: #f8fafc;
-            background: transparent;
-            transition: all 0.4s ease;
-        }
-        .btn-outline:hover {
-            background: rgba(124, 58, 237, 0.1);
-            border-color: rgba(124, 58, 237, 0.8);
-            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
-            transform: translateY(-2px);
-        }
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-title {
-            font-size: clamp(5rem, 14vw, 8rem);
+
+        .hero h1 {
+            font-size: 4.5rem;
             font-weight: 800;
+            margin-bottom: 20px;
             letter-spacing: -2px;
-            line-height: 1;
-            color: #f8fafc;
-        }
-        .hero-title:hover {
-            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #a0a0a0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #808080;
+            max-width: 700px;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #404040;
             transition: all 0.4s ease;
         }
-        .tab-button {
-            padding: 0.75rem 1.5rem;
-            border-bottom: 2px solid transparent;
-            color: #d1d5db;
-            transition: all 0.3s ease;
-            white-space: nowrap;
+
+        .btn-secondary:hover {
+            border-color: #7c3aed;
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #808080;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #404040;
+            background: transparent;
+            color: #a0a0a0;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
         }
-        .tab-button.active {
-            color: #f8fafc;
-            border-bottom-color: #ec4899;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: #7c3aed;
+            color: #ffffff;
+            background: rgba(124, 58, 237, 0.1);
         }
-        .tab-button:hover:not(.active) {
-            color: #f1f5f9;
-            border-bottom-color: rgba(124, 58, 237, 0.3);
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
         }
-        .project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #f8fafc; }
-        .project-desc { font-size: 0.95rem; color: #d1d5db; line-height: 1.5; margin-bottom: 1rem; }
-        .store-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(124, 58, 237, 0.15);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 10px;
-            color: #d1d5db;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .store-link:hover {
-            background: rgba(124, 58, 237, 0.25);
-            color: #f8fafc;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-            transform: translateY(-2px);
-        }
-        .available-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(124, 58, 237, 0.08);
+
+        .project-card {
+            background: rgba(20, 20, 30, 0.45);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 8px;
-            color: #d1d5db;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.4s ease;
+            display: none;
+        }
+
+        .project-card.active {
+            display: block;
+        }
+
+        .project-card:hover {
+            background: rgba(20, 20, 30, 0.6);
+            border-color: rgba(124, 58, 237, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.1);
+        }
+
+        .project-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .project-description {
+            color: #a0a0a0;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            padding: 8px 14px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            color: #a0a0a0;
+            border-radius: 6px;
+            text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
         }
-        .section-title {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-            color: #f8fafc;
+
+        .link-btn:hover {
+            background: rgba(124, 58, 237, 0.4);
+            color: #ffffff;
+            border-color: #7c3aed;
         }
-        .section-subtitle {
-            color: #d1d5db;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
+
+        /* Web Projects Section */
+        .web-projects {
+            padding: 100px 20px;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .web-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .web-card {
+            background: rgba(20, 20, 30, 0.45);
+            backdrop-filter: blur(10px);
+            border: 1px dashed rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .web-card:hover {
+            background: rgba(20, 20, 30, 0.6);
+            border-color: rgba(124, 58, 237, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .web-card a {
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .web-card a:hover {
+            color: #ec4899;
+        }
+
+        .web-description {
+            color: #808080;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(20, 20, 30, 0.45);
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 40px 20px;
+            text-align: center;
+            color: #808080;
+        }
+
+        footer a {
+            color: #7c3aed;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ec4899;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card.active {
+            animation: fadeIn 0.4s ease;
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
-        <div class="relative z-10 text-center max-w-5xl mx-auto">
-            <h1 class="hero-title mb-8">MOWE</h1>
-            
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-100 mb-8 leading-tight">
-                Разработка мобильных приложений (iOS / Android) и веб-сервисов полного цикла
-            </h2>
-            
-            <p class="text-lg md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
-                70+ коммерческих проектов: маркетплейсы, крипто-платформы, фриланс-биржи, каршеринг, медицинские и образовательные сервисы, Telegram Mini Apps.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#projects" class="btn-gradient px-8 py-4 rounded-lg font-semibold text-lg inline-block">
-                    Смотреть проекты
-                </a>
-                <a href="https://t.me/mowe_dev" target="_blank" class="btn-outline px-8 py-4 rounded-lg font-semibold text-lg inline-block">
-                    Связаться
-                </a>
+    <section class="hero">
+        <div class="container">
+            <h1>MOWE</h1>
+            <h2>Разработка мобильных приложений (iOS / Android) и веб-сервисов полного цикла</h2>
+            <p>70+ коммерческих проектов: маркетплейсы, крипто-платформы, фриланс-биржи, каршеринг, медицинские и образовательные сервисы, Telegram Mini Apps.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Смотреть проекты</a>
+                <a href="https://t.me/mowe_dev" target="_blank" class="btn btn-secondary">Связаться</a>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="section-title text-center mb-2">Наши проекты</h2>
-            <p class="section-subtitle text-center">70+ мобильных приложений и веб-сервисов</p>
-            
-            <!-- Filter Tabs -->
-            <div class="overflow-x-auto mb-16 pb-4 -mx-4 px-4">
-                <div class="flex gap-0 min-w-max md:min-w-0 md:justify-center border-b border-gray-800">
-                    <button class="tab-button active" onclick="filterProjects('all', this)">Все проекты</button>
-                    <button class="tab-button" onclick="filterProjects('marketplace', this)">Маркетплейсы</button>
-                    <button class="tab-button" onclick="filterProjects('freelance', this)">Фриланс</button>
-                    <button class="tab-button" onclick="filterProjects('rides', this)">Поездки</button>
-                    <button class="tab-button" onclick="filterProjects('crypto', this)">Крипто</button>
-                    <button class="tab-button" onclick="filterProjects('dating', this)">Знакомства</button>
-                    <button class="tab-button" onclick="filterProjects('education', this)">Образование</button>
-                    <button class="tab-button" onclick="filterProjects('other', this)">Другое</button>
-                </div>
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Наши проекты</h2>
+            <p class="section-subtitle">70+ мобильных приложений и веб-сервисов</p>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="marketplace">Маркетплейсы</button>
+                <button class="filter-btn" data-filter="freelance">Фриланс</button>
+                <button class="filter-btn" data-filter="rides">Поездки</button>
+                <button class="filter-btn" data-filter="crypto">Крипто</button>
+                <button class="filter-btn" data-filter="dating">Знакомства</button>
+                <button class="filter-btn" data-filter="education">Образование</button>
+                <button class="filter-btn" data-filter="other">Другое</button>
             </div>
-            
-            <!-- Projects Grid -->
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <div class="projects-grid" id="projectsGrid"></div>
         </div>
     </section>
 
     <!-- Web Projects Section -->
-    <section class="py-24 px-4 md:px-8 border-t border-gray-800 border-opacity-30">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="section-title text-center mb-2">Веб-проекты</h2>
-            <p class="section-subtitle text-center">Полный цикл разработки веб-сервисов</p>
-            
-            <div id="web-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <section class="web-projects">
+        <div class="container">
+            <h2 class="section-title">Веб-проекты</h2>
+            <p class="section-subtitle">Полный цикл разработки веб-сервисов</p>
+            <div class="web-grid" id="webGrid"></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-800 border-opacity-30 py-16 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-gray-500 mb-4">
-                <span class="font-semibold text-gray-300">MOWE Development</span> | 
-                Telegram: <a href="https://t.me/mowe_dev" target="_blank" class="text-purple-400 hover:text-pink-400 transition-colors">@mowe_dev</a> | 
-                <a href="https://mowedev.ru/" target="_blank" class="text-purple-400 hover:text-pink-400 transition-colors">mowedev.ru</a>
-            </p>
-            <p class="text-gray-600 text-sm">Made with precision and code.</p>
+    <footer>
+        <div class="container">
+            <p>MOWE Development | Telegram: <a href="https://t.me/mowe_dev" target="_blank">@mowe_dev</a> | <a href="https://mowedev.ru" target="_blank">mowedev.ru</a></p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Made with precision and code.</p>
         </div>
     </footer>
 
     <script>
         const projects = [
-            // МАРКЕТПЛЕЙСЫ
-            { name: 'Zolim', desc: 'Аналог авито (1 в 1). Сайт и мобильное приложение на flutter.', category: 'marketplace', links: [] },
-            { name: 'Aramisauto', desc: 'Приложение для продажи/покупки авто. Аналог авито на рынок Франции.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.aramisauto.ecommerce&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/fr/app/aramisauto-voiture-occasion/id1170153344' }] },
-            { name: 'The Saree Room', desc: 'Онлайн-магазин одежды на рынок Канады.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=co.tapcart.app.id_LfEX9YlK4t' }, { type: 'app-store', url: 'https://apps.apple.com/ca/app/the-saree-room/id1585200109' }] },
-            { name: 'Dish marketplace', desc: 'Магазин посуды. Сайт и мобильное приложение на flutter. Интеграция с 1С.', category: 'marketplace', links: [] },
-            { name: 'Metro Brazil', desc: 'Приложение онлайн-магазин в Бразилии.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=metrobrazil.android.app' }, { type: 'app-store', url: 'https://apps.apple.com/us/app/metro-brazil/id1503335901' }] },
-            { name: 'ZAGON', desc: 'Приложение для магазина футболок (только дизайн).', category: 'marketplace', links: [] },
-            { name: 'Talia', desc: 'Магазин одежды с дизайном как в Lamoda, интеграция с 1С.', category: 'marketplace', links: [] },
-            { name: 'Handing', desc: 'Мобильное приложение для маркетплейса.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=co.handing.mobile' }] },
-            { name: 'Artinove', desc: 'Приложение для создания смет и счётов.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.InovaSquad.Artinove' }, { type: 'app-store', url: 'https://apps.apple.com/us/app/artinove-devis-facture-facile/id828637130' }] },
-            { name: 'iTicket', desc: 'Приложение для покупки билетов на события.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.evoit.iticket' }] },
-            { name: 'Eliza Was Here', desc: 'Приложение для путешествий и приключений.', category: 'marketplace', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.sundiogroup.elizawashere' }] },
-
-            // ФРИЛАНС
-            { name: 'Замерщики', desc: 'Биржа фриланса (по типу youdo), но с фокусом на выполнении измерительных работ.', category: 'freelance', links: [] },
-            { name: 'Кадастр+', desc: 'Биржа фриланса (по типу youdo), но с фокусом на выполнении кадастровых работ. Функционал администратора для проверки исполнителя.', category: 'freelance', links: [] },
-            { name: 'Iziwork', desc: 'Приложение для поиска работы, временных заданий во Франции (аналог youdo).', category: 'freelance', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=abeka.iziwork&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/by/app/iziwork-ofere%C3%A7a-servi%C3%A7os/id6450756366' }] },
-            { name: 'Instapro Homeowner', desc: 'Поиск специалистов по благоустройству дома.', category: 'freelance', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.instapro.homeownerapp.italy&gl=IT' }] },
-            { name: 'Производство.РФ', desc: 'Фриланс-биржа для фирм, предоставляющих услуги по обработке деталей.', category: 'freelance', links: [] },
-            { name: 'ПодРаботкин', desc: 'Приложение для поиска исполнителя.', category: 'freelance', links: [] },
-            { name: 'OJOBS', desc: 'Приложение для поиска исполнителя.', category: 'freelance', links: [] },
-            { name: 'ДомОтиДО', desc: 'Приложение для поиска специалистов по ремонту и обслуживанию дома.', category: 'freelance', links: [] },
-            { name: 'BeautyMasters', desc: 'Приложение – записная книжка для мастеров сферы красоты. Ведение списка клиентов, отправка смс / пуш-уведомлений с напоминанием, календарь, учет доходов/расходов.', category: 'freelance', links: [] },
-
-            // ПОЕЗДКИ
-            { name: 'Подвези', desc: 'Аналог блакар. Администратор может создавать маршруты. Водители и пассажиры могут подписываться на маршрут.', category: 'rides', links: [] },
-            { name: 'LidCar', desc: 'Аналог блаблакар / едем.рф.', category: 'rides', links: [] },
-            { name: 'Поездки.РФ', desc: 'Аналог блаблакар / едем.рф.', category: 'rides', links: [] },
-            { name: 'Аян-чорук', desc: 'Приложение по типу блаблакар, но с возможностью не только найти попутчика, но и попутчик по грузоперевозкам.', category: 'rides', links: [] },
-            { name: 'DTD', desc: 'Приложение по типу блаблакара на рынок США, для перевозки авто между авто-аукционами.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.dtd.mobile' }] },
-            { name: 'Toosla', desc: 'Приложения для проката автомобилей в Париже и Лионе.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.toosla&gl=FR' }, { type: 'app-store', url: 'https://apps.apple.com/by/app/toosla-car-rental/id1156964115' }] },
-            { name: 'OnTime Cars', desc: 'Приложение для аренды автомобилей.', category: 'rides', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.eurosofttech.oakleycars' }, { type: 'app-store', url: 'https://apps.apple.com/ru/app/ontime-cars/id1530546190?l=en-GB' }] },
-
-            // КРИПТО
-            { name: 'SimpleSwap', desc: 'Сервис обмена криптовалют без регистрации.', category: 'crypto', links: [] },
-            { name: 'Bitso', desc: 'Популярная платформа в Латинской Америке для торговли криптовалютами.', category: 'crypto', links: [] },
-            { name: 'Hodlnaut', desc: 'Приложение для получения процентов на депозиты в криптовалюте.', category: 'crypto', links: [] },
-            { name: 'Coinomi', desc: 'Мультивалютный кошелек с поддержкой различных блокчейнов.', category: 'crypto', links: [] },
-            { name: 'Delta', desc: 'Приложение для отслеживания портфеля криптовалют с поддержкой множества монет.', category: 'crypto', links: [] },
-            { name: 'Zebpay', desc: 'Индийская биржа криптовалют.', category: 'crypto', links: [] },
-            { name: 'XREX', desc: 'Криптобиржа с возможностью P2P-трейдинга.', category: 'crypto', links: [] },
-            { name: 'KUSHNIR', desc: 'Криптоинвестиции в проекты, краудфандинговая платформа.', category: 'crypto', links: [] },
-            { name: 'H2cryptO', desc: 'Криптовалютная платформа для торговли.', category: 'crypto', links: [] },
-
-            // ЗНАКОМСТВА
-            { name: 'Silver Spark', desc: 'Приложение на рынок Канады, знакомства для пенсионеров.', category: 'dating', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.sprestay.silverspark' }] },
-            { name: 'Amone', desc: 'Приложение для быстрых знакомств. Сложный алгоритм метчинга и продвинутая логика чата.', category: 'dating', links: [] },
-            { name: 'ArabLounge', desc: 'Приложение для знакомств с арабами.', category: 'dating', links: [] },
-            { name: 'SiAstro', desc: 'Приложение для знакомств. Тиндер с гороскопом.', category: 'dating', links: [] },
-            { name: 'Tithe', desc: 'Приложение для знакомств.', category: 'dating', links: [] },
-            { name: 'Out & About', desc: 'Приложение для знакомств. Пользователи отображаются на карте.', category: 'dating', links: [] },
-            { name: 'Maze', desc: 'Приложение для поиска партнера.', category: 'dating', links: [] },
-            { name: 'GoGo', desc: 'Приложение для знакомств и встреч.', category: 'dating', links: [] },
-
-            // ОБРАЗОВАНИЕ И МЕДИЦИНА
-            { name: 'ListenUp Spanish', desc: 'Приложения для изучения испанского языка.', category: 'education', links: [{ type: 'google-play', url: 'https://play.google.com/store/apps/details?id=com.listenup.spanish.listening.practice' }] },
-            { name: 'Emergency Service', desc: 'Медицинский справочник и тесты по специальностям.', category: 'education', links: [] },
-            { name: 'Нарколог.рф', desc: 'Приложение для срочного вызова врача-нарколога.', category: 'education', links: [] },
-            { name: 'Передышка', desc: 'Социальное приложение "передышка", для реализации программы "передышка" в фондах, оказывающих помощь детям с ОВЗ.', category: 'education', links: [] },
-            { name: 'SM Clinic', desc: 'Приложение для записи на прием в медицинскую клинику.', category: 'education', links: [] },
-
-            // ДРУГОЕ
-            { name: '@puparty_bot', desc: 'Telegram Mini App. Более 136 тысяч пользователей. Геймплей: крутишь рулетку, получаешь монеты, тратишь их на покупку собак.', category: 'other', links: [{ type: 'telegram', url: 'https://t.me/puparty_bot' }] },
-            { name: '@tontarot_bot', desc: 'Telegram Mini App. Более 16 тысяч пользователей. Приложение с раскладами таро, прогнозами.', category: 'other', links: [{ type: 'telegram', url: 'https://t.me/tontarot_bot' }] },
-            { name: 'Guidigo', desc: 'Приложение для путешествий с гидом.', category: 'other', links: [] },
-            { name: 'Spain Guide', desc: 'Путеводитель по Испании.', category: 'other', links: [] },
-            { name: 'Alquiler Argentina', desc: 'Приложение для аренды жилья в Аргентине.', category: 'other', links: [] },
-            { name: 'Booking Service', desc: 'Сервис бронирования услуг.', category: 'other', links: [] },
+            { name: 'Aramisauto', category: 'marketplace', description: 'Приложение для продажи/покупки авто. Аналог авито на рынок Франции.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.aramisauto.ecommerce&gl=FR' }, { text: 'AS', url: 'https://apps.apple.com/fr/app/aramisauto-voiture-occasion/id1170153344' }] },
+            { name: 'The Saree Room', category: 'marketplace', description: 'Онлайн-магазин одежды на рынок Канады.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=co.tapcart.app.id_LfEX9YlK4t' }, { text: 'AS', url: 'https://apps.apple.com/ca/app/the-saree-room/id1585200109' }] },
+            { name: 'Handing', category: 'other', description: 'Мобильное приложение для родителей за контролем домашки детей.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=co.handing.mobile' }] },
+            { name: 'Artinove', category: 'freelance', description: 'Приложение для создания смет и счётов.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.InovaSquad.Artinove' }, { text: 'AS', url: 'https://apps.apple.com/us/app/artinove-devis-facture-facile/id828637130' }] },
+            { name: 'Silver Spark', category: 'dating', description: 'Приложение на рынок Канады, знакомства для пенсионеров.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.silverspark' }] },
+            { name: 'ListenUp Spanish', category: 'education', description: 'Приложения для изучения испанского языка.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.listenup.spanish.listening.practice' }] },
+            { name: 'iTicket', category: 'other', description: 'Приложение для покупки билетов на события.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.evoit.iticket' }, { text: 'Web', url: 'https://iticket.md/ru' }] },
+            { name: 'Iziwork', category: 'freelance', description: 'Приложение для поиска работы, временных заданий во Франции (аналог youdo).', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=abeka.iziwork&gl=FR' }, { text: 'AS', url: 'https://apps.apple.com/by/app/iziwork-ofere%C3%A7a-servi%C3%A7os/id6450756366' }] },
+            { name: 'Instapro Homeowner', category: 'freelance', description: 'Поиск специалистов по благоустройству дома.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.instapro.homeownerapp.italy&gl=IT' }] },
+            { name: 'Toosla', category: 'rides', description: 'Приложения для проката автомобилей в Париже и Лионе.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.toosla&gl=FR' }, { text: 'AS', url: 'https://apps.apple.com/by/app/toosla-car-rental/id1156964115' }] },
+            { name: 'OnTime Cars', category: 'rides', description: 'Приложение для аренды автомобилей.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.eurosofttech.oakleycars' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/ontime-cars/id1530546190?l=en-GB' }] },
+            { name: 'Eliza Was Here', category: 'other', description: 'Приложение для путешествий и приключений.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sundiogroup.elizawashere' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/eliza-was-here-holidays/id1284561303?l=en-GB' }] },
+            { name: 'GoGo', category: 'other', description: 'Аналог трэвелата. Сервис по бронированию авиабилетов, отелей и пакетных туров.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sundiogroup.gogo' }, { text: 'AS', url: 'https://apps.apple.com/nl/app/gogo-jongeren-reizen/id1118416322?l=en-GB' }] },
+            { name: 'Metro Brazil', category: 'marketplace', description: 'Приложение онлайн-магазин в Бразилии.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=metrobrazil.android.app' }, { text: 'AS', url: 'https://apps.apple.com/us/app/metro-brazil/id1503335901' }] },
+            { name: '@puparty_bot', category: 'other', description: 'Telegram Mini App. Более 136 тысяч пользователей. Геймплей: крутишь рулетку, получаешь монеты, тратишь их на покупку собак.', links: [{ text: 'TG', url: 'https://t.me/puparty_bot' }] },
+            { name: '@tontarot_bot', category: 'other', description: 'Telegram Mini App. Более 16 тысяч пользователей. Приложение с раскладами таро, прогнозами.', links: [{ text: 'TG', url: 'https://t.me/tontarot_bot' }] },
+            { name: 'Zolim', category: 'marketplace', description: 'Аналог авито (1 в 1). Сайт и мобильное приложение на flutter.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Dish marketplace', category: 'marketplace', description: 'Магазин посуды. Сайт и мобильное приложение на flutter. Интеграция с 1С.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'ZAGON', category: 'marketplace', description: 'Приложение для магазина футболок (только дизайн).', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Talia', category: 'marketplace', description: 'Магазин одежды с дизайном как в Lamoda, интеграция с 1С.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Замерщики', category: 'freelance', description: 'Биржа фриланса (по типу youdo), но с фокусом на выполнении измерительных работ.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Кадастр+', category: 'freelance', description: 'Биржа фриланса (по типу youdo), но с фокусом на выполнении кадастровых работ. Функционал администратора для проверки исполнителя.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.mycompany.cadastralengineerapp' }] },
+            { name: 'Производство.РФ', category: 'freelance', description: 'Фриланс-биржа для фирм, предоставляющих услуги по обработке деталей.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.proizvodstvorf' }] },
+            { name: 'ПодРаботкин', category: 'freelance', description: 'Приложение для поиска исполнителя.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'OJOBS', category: 'freelance', description: 'Приложение для поиска исполнителя.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Подвези', category: 'rides', description: 'Аналог блакар. Администратор может создавать маршруты. Водители и пассажиры могут подписываться на маршрут.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'LidCar', category: 'rides', description: 'Аналог блаблакар / едем.рф.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Поездки.РФ', category: 'rides', description: 'Аналог блаблакар / едем.рф.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Аян-чорук', category: 'rides', description: 'Приложение по типу блаблакар, но с возможностью не только найти попутчика, но и попутчик по грузоперевозкам.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'DTD', category: 'rides', description: 'Приложение по типу блаблакара на рынок США, для перевозки авто между авто-аукционами.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'SimpleSwap', category: 'crypto', description: 'Сервис обмена криптовалют без регистрации.', links: [{ text: 'GP', url: 'https://play.google.com/store/search?q=SimpleSwap&c=apps&hl=ru' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/simpleswap-обмен-криптовалюты/id1506038278' }] },
+            { name: 'Bitso', category: 'crypto', description: 'Популярная платформа в Латинской Америке для торговли криптовалютами.', links: [{ text: 'GP', url: 'https://play.google.com/store/search?q=Bitso&c=apps&hl=ru' }, { text: 'AS', url: 'https://apps.apple.com/us/app/bitso-buy-bitcoin-easily/id1292836438' }] },
+            { name: 'Hodlnaut', category: 'crypto', description: 'Приложение для получения процентов на депозиты в криптовалюте.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.hodlnaut.mobile&hl=ru' }, { text: 'AS', url: 'https://apps.apple.com/by/app/hodlnaut/id1564376022' }] },
+            { name: 'Coinomi', category: 'crypto', description: 'Мультивалютный кошелек с поддержкой различных блокчейнов.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.coinomi.wallet&hl=ru' }, { text: 'AS', url: 'https://apps.apple.com/us/app/coinomi-wallet/id1333588809' }] },
+            { name: 'Delta', category: 'crypto', description: 'Приложение для отслеживания портфеля криптовалют с поддержкой множества монет.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=io.getdelta.android&hl=ru' }] },
+            { name: 'Zebpay', category: 'crypto', description: 'Индийская биржа криптовалют.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.zedpay.app.android&hl=ru' }, { text: 'AS', url: 'https://apps.apple.com/in/app/zebpay-buy-bitcoin-crypto/id944854686' }] },
+            { name: 'XREX', category: 'crypto', description: 'Криптобиржа с возможностью P2P-трейдинга.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.xrex.mobile&hl=ru' }, { text: 'AS', url: 'https://apps.apple.com/ph/app/xrex-buy-crypto-bitcoin-usdt/id1482096895' }] },
+            { name: 'Форекс Торговые Стратегии', category: 'crypto', description: 'Приложение для форекса и трейдинга.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.instaforex.android.forexstrategies' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/форекс-торговые-стратегии/id1209946702' }] },
+            { name: 'AQT', category: 'crypto', description: 'Приложение инвестиций и трейдинга.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.seekerscapital.aqt' }, { text: 'AS', url: 'https://apps.apple.com/us/app/id1440938599' }] },
+            { name: 'Cryptohopper', category: 'crypto', description: 'Приложение для крипто-трейдинга.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.cryptohopper_mobile' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/cryptohopper/id1463052050' }] },
+            { name: 'Amone', category: 'dating', description: 'Приложение для быстрых знакомств. Сложный алгоритм метчинга и продвинутая логика чата.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'ArabLounge', category: 'dating', description: 'Приложение для знакомств с арабами.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.arablounge.erosapp' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/arablounge-arab-dating/id6448712875' }] },
+            { name: 'SiAstro', category: 'dating', description: 'Приложение для знакомств. Тиндер с гороскопом.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.siastro' }] },
+            { name: 'Tithe', category: 'dating', description: 'Приложение для знакомств.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.companions' }] },
+            { name: 'Out & About', category: 'dating', description: 'Приложение для знакомств. Пользователи отображаются на карте.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.mycompany.outandabout&pli=1' }] },
+            { name: 'Maze', category: 'dating', description: 'Приложение для поиска партнера.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'BeautyMasters', category: 'education', description: 'Приложение – записная книжка для мастеров сферы красоты. Ведение списка клиентов, отправка смс / пуш-уведомлений с напоминанием, календарь, учет доходов/расходов.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Emergency Service', category: 'education', description: 'Медицинский справочник и тесты по специальностям.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.emergencyserviceapp' }] },
+            { name: 'Нарколог.рф', category: 'education', description: 'Приложение для срочного вызова врача-нарколога.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Передышка', category: 'education', description: 'Социальное приложение "передышка", для реализации программы "передышка" в фондах, оказывающих помощь детям с ОВЗ.', links: [{ text: 'GP', url: '#' }, { text: 'AS', url: '#' }] },
+            { name: 'Guidigo', category: 'other', description: 'Путеводитель и туристический гид.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.guidigo' }, { text: 'AS', url: 'https://apps.apple.com/us/app/guidigo/id540673423' }] },
+            { name: 'Spain Guide', category: 'other', description: 'Путеводитель по Испании.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.happyapplab.spain_travel_guide' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/spain-guide-travel-spain/id1672947371' }] },
+            { name: 'Alquiler Argentina', category: 'other', description: 'Сервис по бронированию отелей в Латинской Америке.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=liricus.alquilerargentina' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/alquiler-argentina/id1588111749' }] },
+            { name: 'Prix Immo', category: 'other', description: 'Приложение недвижимости.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=fr.rihalnet.priximmo' }, { text: 'AS', url: 'https://apps.apple.com/ru/app/prix-immo-vente-immobili' }] },
+            { name: 'КЭС Кузбасс', category: 'other', description: 'Корпоративное приложение для телекоммуникационной компании.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.kesproviders&gl=RU' }] },
+            { name: 'ЯТехника', category: 'other', description: 'Приложение для вызова спецтехники.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.yatechnikaapp' }] },
+            { name: 'Техника', category: 'other', description: 'Приложение по заказу спецтехники. Реализованы выплаты исполнителям.', links: [{ text: 'GP', url: '#' }] },
+            { name: 'Mix-курьер', category: 'other', description: 'Курьерское приложение. Пользователь может зарабатывать как курьер, либо отправлять посылки как заказчик.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.mixcourier.client' }] },
+            { name: 'Электростанция', category: 'other', description: 'Приложение для поиска электрозарядок. В приложении можно сдавать в аренду свою зарядку.', links: [{ text: 'GP', url: '#' }] },
+            { name: 'Замок-мастер', category: 'other', description: 'Простейшее приложение, где в пару кликов можно заказать мастера на дом, для починки или замены замка.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.lockpicking' }] },
+            { name: 'Finance App', category: 'other', description: 'Приложение финансов и учета.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.financeappl' }] },
+            { name: 'Parent-Child', category: 'other', description: 'Приложение для родителей и детей.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.parentchild' }] },
+            { name: 'Spiritup', category: 'other', description: 'Духовное приложение.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.spiritup' }] },
+            { name: 'Clothers', category: 'other', description: 'Приложение одежды.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.clothersapp' }] },
+            { name: 'Magistral NH', category: 'other', description: 'Приложение путешествий.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=com.sprestay.magistralnh' }] },
+            { name: 'SMN', category: 'other', description: 'Приложение погоды и прогнозов.', links: [{ text: 'GP', url: 'https://play.google.com/store/apps/details?id=ar.gob.smn' }, { text: 'AS', url: 'https://apps.apple.com/us/app/smn-tiempo-y-pron' }] }
         ];
 
         const webProjects = [
-            { name: 'pravo.tech', desc: 'Автоматизация для юристов.', url: 'https://pravo.tech/' },
-            { name: 'smclinic.ru', desc: 'Сеть медицинских клиник.', url: 'https://www.smclinic.ru/' },
-            { name: 'burevestnik24.ru', desc: 'Ресторан/яхт-клуб.', url: 'https://burevestnik24.ru/' },
-            { name: 'dirinvest.ru', desc: 'Инвестиционный терминал.', url: 'https://dirinvest.ru/' },
-            { name: 'Кросс-промо платформа', desc: 'Кросс-промо платформа для приложений.', url: 'https://xn--j1aefabdfcha.xn--p1ai/' },
-            { name: 'lyadov-clinic.ru', desc: 'Клиника урологии и андрологии.', url: 'https://lyadov-clinic.ru/' },
-            { name: 'kuhni-modena.ru', desc: 'Кухни на заказ Modena.', url: 'https://kuhni-modena.ru/' },
-            { name: 'bookva-books.com', desc: 'Магазин иностранных книг.', url: 'https://bookva-books.com/' },
-            { name: 'lgcity.ru', desc: 'Сеть магазинов техники LG.', url: 'https://lgcity.ru/' },
+            { name: 'pravo.tech', description: 'Автоматизация для юристов.' },
+            { name: 'smclinic.ru', description: 'Сеть медицинских клиник.' },
+            { name: 'burevestnik24.ru', description: 'Ресторан/яхт-клуб.' },
+            { name: 'dirinvest.ru', description: 'Инвестиционный терминал.' },
+            { name: 'Кросс-промо платформа', description: 'Кросс-промо платформа для приложений.' },
+            { name: 'lyadov-clinic.ru', description: 'Клиника урологии и андрологии.' },
+            { name: 'kuhni-modena.ru', description: 'Кухни на заказ Modena.' },
+            { name: 'bookva-books.com', description: 'Магазин иностранных книг.' },
+            { name: 'lgcity.ru', description: 'Сеть магазинов техники LG.' }
         ];
 
-        function createProjectCard(project) {
-            let linksHTML = '';
-            if (project.links.length > 0) {
-                linksHTML = project.links.map(link => {
-                    let icon = '';
-                    let title = '';
-                    if (link.type === 'google-play') {
-                        icon = 'GP';
-                        title = 'Google Play';
-                    } else if (link.type === 'app-store') {
-                        icon = 'AS';
-                        title = 'App Store';
-                    } else if (link.type === 'telegram') {
-                        icon = 'TG';
-                        title = 'Telegram Mini App';
-                    }
-                    return `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="store-link" title="${title}">${icon}</a>`;
-                }).join('');
-            } else {
-                linksHTML = '<span class="available-badge">Доступно в App Store и Google Play</span>';
-            }
-            
-            return `
-                <div class="glass-card p-6 fade-in">
-                    <h3 class="project-title">${project.name}</h3>
-                    <p class="project-desc">${project.desc}</p>
-                    <div class="flex flex-wrap gap-2">
-                        ${linksHTML}
-                    </div>
-                </div>
-            `;
+        let currentFilter = 'all';
+
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+
+            projects.forEach(project => {
+                if (currentFilter === 'all' || project.category === currentFilter) {
+                    const card = document.createElement('div');
+                    card.className = 'project-card active';
+                    
+                    let linksHTML = '';
+                    project.links.forEach(link => {
+                        linksHTML += `<a href="${link.url}" target="_blank" class="link-btn">${link.text}</a>`;
+                    });
+
+                    card.innerHTML = `
+                        <div class="project-name">${project.name}</div>
+                        <div class="project-description">${project.description}</div>
+                        <div class="project-links">${linksHTML}</div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
         }
 
-        function createWebProjectCard(project) {
-            return `
-                <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="no-underline">
-                    <div class="glass-card p-6 fade-in h-full">
-                        <h3 class="project-title">${project.name}</h3>
-                        <p class="project-desc">${project.desc}</p>
-                    </div>
-                </a>
-            `;
+        function renderWebProjects() {
+            const grid = document.getElementById('webGrid');
+            grid.innerHTML = '';
+
+            webProjects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'web-card';
+                card.innerHTML = `
+                    <a href="https://${project.name}" target="_blank">${project.name}</a>
+                    <div class="web-description">${project.description}</div>
+                `;
+                grid.appendChild(card);
+            });
         }
 
-        function filterProjects(category, button) {
-            const grid = document.getElementById('projects-grid');
-            const filtered = category === 'all' ? projects : projects.filter(p => p.category === category);
-            
-            grid.innerHTML = filtered.map(p => createProjectCard(p)).join('');
-            
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('projects-grid');
-            grid.innerHTML = projects.map(p => createProjectCard(p)).join('');
-            
-            const webGrid = document.getElementById('web-projects-grid');
-            webGrid.innerHTML = webProjects.map(p => createWebProjectCard(p)).join('');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.glass-card').forEach(card => observer.observe(card));
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderProjects();
+            });
         });
+
+        renderProjects();
+        renderWebProjects();
     </script>
 </body>
 </html>
